@@ -9,7 +9,7 @@ namespace DeviceAPI.Model
     public class Device
     {
         [Key]
-        public Guid Devid { get; set; }
-        public string DeviceName { get; set; }
+        public Guid deviceId { get; set; }
+        public string deviceName { get; set; }
     }
 }

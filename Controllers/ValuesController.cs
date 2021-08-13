@@ -29,11 +29,33 @@ namespace DeviceAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                dev.Devid = Guid.NewGuid();
+                dev.deviceId = Guid.NewGuid();
                 deviceRepoistory.Add(dev);
             }
         }
 
+        [HttpGet("{id}")]
+        public Device get(Guid id)
+        {
+            return deviceRepoistory.GetbyID(id);
+        }
+
+        [HttpDelete]
+        public void Delete(Guid id)
+        {
+            deviceRepoistory.Delete(id);
+
+        }
+
+        [HttpPut("{id}")]
+        public void Put(Guid id, [FromBody] Device dev)
+        {
+            dev.deviceId = id;
+            if (ModelState.IsValid)
+            {
+                deviceRepoistory.Update(dev);
+            }
+        }
 
     }
 }
